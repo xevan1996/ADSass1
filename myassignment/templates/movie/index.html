@@ -1,0 +1,311 @@
+{% extends "movie/base.html" %}
+{% block body_block %}
+<div style="text-align:center">
+    <div class="container">
+        <div class="jumbotron" style="background-color:#CBC3E3;">
+          <h1>Welcome to Movie Trend Analysis from 1995 to 2021!</h1>
+          {% if user.is_authenticated %}
+              <h2>Hello there, {{ user.username }}!</h2>
+          {% else %}
+              <h2>Register or Login if you'd like to</h2>
+          {% endif %} 
+          <h3>
+            <li><a class="navbar-link" href= "https://www.the-numbers.com/market/"> Data Source Click here</a></li>
+          </h3>
+          <h3></h3>
+          <h4>
+            Everytime when a button is clicked, kindly scroll back up to see the data visualization.
+          </h4>
+        </div>
+      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_mpc()">Movie Production in Different Countries</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+        <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_apb()">Average Production Budget in Different Countries</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+        <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tbo()">Total Worldwide Box Office</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+        <div>
+        <div class="row">
+            <div class="col-3">
+                <h1 style="color:#0055FF; text-align:center; font-size: 24px" >
+                    The United States was chosen for analysis from here onwards as it has the most movies produced with the highest total worldwide box office.
+                </h1>
+            <button onclick="getimage_tbpy()">Total Box Office vs Year </button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+        <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tsp()">Ticket Sold and Average Ticket Price vs Year</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+        <div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                Box office has a steady increase over the decades until the recent covid pandemic, plummeting sharply down the drain.
+            </h1>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                Weirdly enough, the average price per ticket is not budging.
+            </h1>    
+            <h1></h1>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_rpy()">Movies Production Percentage by Different Production Distributor</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                Surprisingly enough, other studios besides the BIG SIX are flourishing especially during the pandemic!
+            </h1> 
+            <h1></h1>
+        <div>        
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tmvp()">Category Preferences in Annual Top Movies</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+               So it seems an original screenplay of a live action superhero adventure movie with a PG-13 rating is the best way to go! Walt Disney dominated the industry, no contest it seems.
+            </h1> 
+            <h1></h1>
+        <div>        
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tss()">Ticket Sold and Total Sales for Top Movie Each Year</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                Nothing much to see here, just that a sad observation on the gradual increase in the ticket price. A much needed interruption from the pandemic to rest the price, I guess...
+             </h1> 
+             <h1></h1>
+        <div>      
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tgms()">Market Share of Top Grossing Distributors</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                It's safe to say the BIG SIX dominated the movie industry.
+             </h1> 
+             <h1></h1>
+        <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tgfms()">Market Share of Genres</button>
+            </div>
+            <div class="col-9">
+                <img id="matplotlib" width="1500">
+            </div>
+            <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                Adventure movies are most popular genre followed by Action movies, WHAT A SURPRISE.
+             </h1> 
+             <h1></h1>
+        <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tmpms()">Market Share of MPAA Ratings</button>
+            </div>
+                <div class="col-9">
+                    <img id="matplotlib" width="1500">
+                </div>
+                <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                    A successful movie must be rated PG-13, pressumably because of the wide array of audience.
+                 </h1> 
+                 <h1></h1>
+            <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tms()">Market Share of Movie Sources</button>
+            </div>
+                <div class="col-9">
+                    <img id="matplotlib" width="1500">
+                </div>
+                <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                    Original screenplay is the way to go. Personally, I ain't paying double to go through the same thing so give me something ORIGINAL.
+                 </h1> 
+                 <h1></h1>
+            <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tpms()">Market Share of Different Production Methods</button>
+            </div>
+                <div class="col-9">
+                    <img id="matplotlib" width="1500">
+                </div>
+                <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                    Well of course it's going to be live action movies, because they are more "pleasing" to the beholder's eyes if you catch my drift.
+                 </h1> 
+                 <h1></h1>
+            <div>
+        <div class="row">
+            <div class="col-3">
+            <button onclick="getimage_tcms()">Market Share of Different Creative Types</button>
+            </div>
+                <div class="col-9">
+                    <img id="matplotlib" width="1500">
+                </div>
+                <h1 style="color:#0055FF; text-align:center; font-size: 24px">
+                    There's a dreamer in all of us, and nothing hits more closely than a great contemporary fiction movie, need I say more?
+                 </h1> 
+                 <h1></h1>
+            <div>                 
+</div>
+<script>
+    // Make API calls
+    function getimage_mpc() {
+		fetch('{% url 'movie:movie-prod-country' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_apb() {
+		fetch('{% url 'movie:average-production-budget' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tbo() {
+		fetch('{% url 'movie:total-box-office' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tbpy() {
+		fetch('{% url 'movie:total-box-year' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tsp() {
+		fetch('{% url 'movie:tikcet-sold-price' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_rpy() {
+		fetch('{% url 'movie:release-per-year' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tmvp() {
+		fetch('{% url 'movie:top-per-year' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tss() {
+		fetch('{% url 'movie:ticket-sold' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tgms() {
+		fetch('{% url 'movie:top-dist-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tgfms() {
+		fetch('{% url 'movie:top-genre-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tmpms() {
+		fetch('{% url 'movie:top-mpaa-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tms() {
+		fetch('{% url 'movie:top-source-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tpms() {
+		fetch('{% url 'movie:top-method-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+    function getimage_tcms() {
+		fetch('{% url 'movie:top-creative-ms' %}')
+		.then(res => res.blob())
+		.then(data => {
+            let imgURL = URL.createObjectURL(data)
+            document.getElementById('matplotlib').src = imgURL
+        })
+	}
+
+</script>
+{% endblock %}
+
