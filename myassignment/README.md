@@ -4,7 +4,8 @@ Welcome to Movie Trend Analysis! The analysis was done from 1995 to 2021. We wis
 
 		a. This is judged basically from number of movies produced and total worldwide box office!
 		b. We would also like to see how much a country spend on movie production.
-2.  Once chose a country, we would like to find out the following infomation:
+		
+2.  Once a country is chosen, we would like to find out the following infomation:
 
 		a. Total box office per year (to see how well the movie industry perform annually and the general trend)
 		b. To see the extend and trend of inflation in the ticket price annually
