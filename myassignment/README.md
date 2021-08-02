@@ -32,30 +32,30 @@ Refer to the data here: https://www.the-numbers.com/market/ and https://www.the-
 *** The data for 2021 is only until JULY 2021 ***
 
 
-4. For the Django Web App, kindly see the format as below
+4. For the Django Web App, kindly see the format:
+	
+		------------------------------------------------
+		|	      Data Visualiszation		|
+		------------------------------------------------
 
 
+		--------------------------------
+		|	Button for graph 1	|
+		--------------------------------
+		Explanation for graph 1
 
--------------------------------------------------
-|	      Data Visualiszation		|
--------------------------------------------------
+		--------------------------------
+		|	Button for graph 2	|
+		--------------------------------
+		Explanation for graph 2
 
+		--------------------------------
+		|	Button for graph 3	|
+		--------------------------------
+		Explanation for graph 3
 
-	---------------------------------
-	|	Button for graph 1	|
-	---------------------------------
-	      Explanation for graph 1
-
-	---------------------------------
-	|	Button for graph 2	|
-	---------------------------------
-	      Explanation for graph 2
-
-	---------------------------------
-	|	Button for graph 3	|
-	---------------------------------
-	      Explanation for graph 3
-
-
-	*** The graph will always render on top, so you have to scroll back up / click the "Back To Top" button to see the graph ***
-	*** I admit the design is crude and ugly and am not proud of it myself, but I can't figure out where to adjust where the image appear in the CSS script ***
+		
+		The name for each graph is in the button itself.
+		
+		*** The graph will always render on top, so you have to scroll back up / click the "Back To Top" button to see the graph ***
+		*** I admit the design is crude and ugly and am not proud of it myself, but I can't figure out where to adjust where the image appear in the CSS script ***
